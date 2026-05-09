@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>母亲节快乐 🌸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+            padding: 20px;
+            animation: bgFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% {
+                background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            }
+            50% {
+                background: linear-gradient(135deg, #fce4ec, #f48fb1, #f06292);
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+        }
+
+        .title {
+            font-size: 28px;
+            color: #e91e63;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #ad1457;
+            margin-bottom: 20px;
+        }
+
+        .input-area {
+            margin: 20px 0;
+        }
+
+        .input-area input {
+            width: 80%;
+            padding: 14px 20px;
+            border: 2px solid #f48fb1;
+            border-radius: 50px;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            background: #fff5f8;
+            color: #880e4f;
+        }
+
+        .input-area input:focus {
+            border-color: #e91e63;
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.2);
+            transform: scale(1.02);
+        }
+
+        .input-area input::placeholder {
+            color: #f48fb1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e91e63, #f06292);
+            color: white;
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+        }
+
+        .btn-secondary:hover {
+            background: #fce4ec;
+        }
+
+        /* 幸运数字游戏 */
+        .game-area {
+            margin: 20px 0;
+        }
+
+        .number-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .num-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid #f48fb1;
+            background: white;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e91e63;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .num-btn:hover {
+            background: #e91e63;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .num-btn:active {
+            transform: scale(0.95);
+        }
+
+        .attempts-info {
+            color: #ad1457;
+            font-size: 15px;
+            margin: 10px 0;
+        }
+
+        .hearts {
+            color: #e91e63;
+            font-size: 20px;
+            letter-spacing: 5px;
+        }
+
+        /* 祝福区 */
+        .blessing {
+            text-align: left;
+            background: linear-gradient(135deg, #fff5f8, #fce4ec);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            line-height: 2;
+            color: #880e4f;
+            font-size: 16px;
+            border-left: 4px solid #e91e63;
+        }
+
+        .blessing .highlight {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e91e63;
+            text-align: center;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #ad1457;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bounce {
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+            70% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 飘落花瓣 */
+        .petal {
+            position: fixed;
+            top: -30px;
+            font-size: 24px;
+            animation: fall linear forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            to {
+                top: 105vh;
+                transform: rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .result-msg {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 飘落花瓣容器 -->
+    <div id="petals"></div>
+
+    <div class="container" id="app">
+        <!-- 页面 1: 欢迎 -->
+        <div id="page-welcome">
+            <div class="title">🌸 母亲节快乐 🌸</div>
+            <div class="subtitle">这是一份专属于您的惊喜</div>
+            <div class="input-area">
+                <input type="text" id="momNameInput" placeholder="请输入妈妈的名字..." maxlength="20">
+            </div>
+            <button class="btn btn-primary" onclick="nextToGame()">✨ 开始 ✨</button>
+        </div>
+
+        <!-- 页面 2: 猜幸运数字 -->
+        <div id="page-game" class="hidden">
+            <div class="title">🍀 猜猜您的幸运数字</div>
+            <div class="subtitle" id="game-greeting"></div>
+            <div class="attempts-info">
+                剩余机会：<span class="hearts" id="hearts-display">❤️❤️❤️</span>
+            </div>
+            <div class="number-buttons" id="number-buttons"></div>
+            <div class="result-msg" id="game-result"></div>
+            <button class="btn btn-primary hidden" id="btn-reveal" onclick="revealBlessing()">💝 查看祝福</button>
+        </div>
+
+        <!-- 页面 3: 祝福 -->
+        <div id="page-blessing" class="hidden fade-in">
+            <div class="title">💐 致 世界上最好的妈妈</div>
+            <div class="blessing" id="blessing-content"></div>
+            <div class="footer">❤️ I Love You Forever, Mom! ❤️</div>
+            <button class="btn btn-primary" onclick="location.reload()" style="margin-top:20px;">🔄 再来一次</button>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 全局变量 ====================
+        let momName = '';
+        let luckyNumber = Math.floor(Math.random() * 10) + 1;
+        let attemptsLeft = 3;
+        let gameFinished = false;
+
+        // ==================== 飘落花瓣效果 ====================
+        function createPetal() {
+            const petals = ['🌸', '💮', '🌷', '🌺', '🌼', '💐', '🏵️'];
+            const petal = document.createElement('span');
+            petal.className = 'petal';
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            petal.style.fontSize = (Math.random() * 20 + 18) + 'px';
+            document.getElementById('petals').appendChild(petal);
+
+            // 动画结束后移除
+            setTimeout(() => {
+                petal.remove();
+            }, 10000);
+        }
+
+        // 每2秒飘一个花瓣
+        setInterval(createPetal, 2000);
+        // 初始飘几个
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createPetal, i * 400);
+        }
+
+        // ==================== 页面切换 ====================
+        function nextToGame() {
+            momName = document.getElementById('momNameInput').value.trim();
+            if (!momName) {
+                momName = '妈妈';
+            }
+
+            // 切换到游戏页
+            document.getElementById('page-welcome').classList.add('hidden');
+            document.getElementById('page-game').classList.remove('hidden');
+            document.getElementById('page-game').classList.add('fade-in');
+            document.getElementById('game-greeting').textContent = 'Hi, ' + momName + '! 选一个数字吧 (1~10)';
+
+            // 重置游戏
+            luckyNumber = Math.floor(Math.random() * 10) + 1;
+            attemptsLeft = 3;
+            gameFinished = false;
+            document.getElementById('hearts-display').textContent = '❤️❤️❤️';
+            document.getElementById('game-result').textContent = '';
+            document.getElementById('btn-reveal').classList.add('hidden');
+
+            // 生成数字按钮
+            renderNumberButtons(true);
+
+            // 多飘一些花瓣
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createPetal, i * 200);
+            }
+        }
+
+        function renderNumberButtons(enabled) {
+            const container = document.getElementById('number-buttons');
+            container.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'num-btn';
+                btn.textContent = i;
+                if (enabled && !gameFinished) {
+                    btn.onclick = function() { guessNumber(i); };
+                } else {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                }
+                container.appendChild(btn);
+            }
+        }
+
+        function guessNumber(guess) {
+            if (gameFinished) return;
+
+            if (guess === luckyNumber) {
+                // 猜对了！
+                document.getElementById('game-result').textContent = '✨ 哇！猜对啦！今天一定超级幸运！ ✨';
+                document.getElementById('game-result').style.color = '#e91e63';
+                document.getElementById('hearts-display').textContent = '💖💖💖';
+                gameFinished = true;
+                document.getElementById('btn-reveal').classList.remove('hidden');
+                document.getElementById('btn-reveal').classList.add('bounce');
+                renderNumberButtons(false);
+
+                // 大量花瓣庆祝
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(createPetal, i * 150);
+                }
+            } else {
+                attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    const hint = guess < luckyNumber ? '⬆️ 再大一点点～' : '⬇️ 再小一点点～';
+                    document.getElementById('game-result').textContent = hint;
+                    const hearts = ['❤️', '❤️', '❤️'];
+                    for (let i = attemptsLeft; i < 3; i++) hearts[i] = '🤍';
+                    document.getElementById('hearts-display').textContent = hearts.join('');
+                } else {
+                    // 机会用完了
+                    document.getElementById('game-result').textContent =
+                        '虽然没猜到，但真正的幸运数字是 ' + luckyNumber + ' 🌟';
+                    document.getElementById('hearts-display').textContent = '🤍🤍🤍';
+                    gameFinished = true;
+                    document.getElementById('btn-reveal').classList.remove('hidden');
+                    document.getElementById('btn-reveal').classList.add('bounce');
+                    renderNumberButtons(false);
+                }
+            }
+        }
+
+        function revealBlessing() {
+            document.getElementById('page-game').classList.add('hidden');
+            document.getElementById('page-blessing').classList.remove('hidden');
+
+            const blessingHTML = `
+            <p>亲爱的 <strong>${momName}</strong>：</p>
+            <br>
+            <p>又是一年母亲节，在这个特别的日子里，</p>
+            <p>我想对您说一些话...</p>
+            <br>
+            <p>✨ 愿岁月温柔以待，让您永远美丽优雅；</p>
+            <p>✨ 愿时光放慢脚步，多留些温暖在您身旁；</p>
+            <p>✨ 愿您<strong>平安</strong>，这是我最简单也最深的愿望；</p>
+            <p>✨ 愿您<strong>健康</strong>，让欢笑常驻我们的家。</p>
+            <br>
+            <p>您是人间四月天，温暖了我的岁岁年年。</p>
+            <p>谢谢你的照顾，希望未来身体健康，平安幸福</p>
+            <br>
+            <span class="highlight">💝 祝我的妈妈杨蓉女士母亲节快乐 💝</span>
+            <span class="highlight">永远平安健康！</span>
+          `;
+
+            document.getElementById('blessing-content').innerHTML = blessingHTML;
+
+            // 疯狂飘花瓣
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createPetal, i * 100);
+            }
+        }
+
+        // ==================== 键盘支持 ====================
+        document.getElementById('momNameInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                nextToGame();
+            }
+        });
+
+        // 初始化一个小花瓣雨
+        window.onload = function() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(createPetal, i * 300);
+            }
+        };
+    </script>
+</body>
+</html>
